@@ -206,7 +206,12 @@ public class EnchantmentEffects {
                 StatusEffectInstance painCycleUpdate = new StatusEffectInstance(StatusEffectsRegistry.PAIN_CYCLE, 120000, i, false, false, true);
                 painEntity.removeStatusEffect(StatusEffectsRegistry.PAIN_CYCLE);
                 painEntity.addStatusEffect(painCycleUpdate);
+                if (playerEntity.getHealth() < 5) {
                 painEntity.damage(painEntity.getWorld().getDamageSources().magic(), 1);
+                }
+                else {
+                    return 0;
+                }
             } else {
                 painEntity.removeStatusEffect(StatusEffectsRegistry.PAIN_CYCLE);
                 return painCycleLevel + 1;
